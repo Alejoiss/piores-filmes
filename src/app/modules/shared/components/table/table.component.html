@@ -1,0 +1,12 @@
+<table class="table table-striped table-hover table-sm table-bordered" *ngIf="tableData">
+    <thead class="thead-dark">
+        <tr>
+            <th *ngFor="let th of tableData.ths" [class]="th.class">{{ th.text }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let td of tableData.tds">
+            <td *ngFor="let data of td" [class]="data.class">{{ data.text }}</td>
+        </tr>
+    </tbody>
+</table>
