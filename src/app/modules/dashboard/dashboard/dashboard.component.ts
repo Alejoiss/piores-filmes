@@ -4,6 +4,7 @@ import { Studio } from '../../shared/models/studio';
 import { Year } from '../../shared/models/year';
 import { AppService } from '../../shared/services/app.service';
 import { IntervalData } from './../../shared/models/interval-data';
+import { Movie } from '../../shared/models/movie';
 
 @Component({
     selector: 'app-dashboard',
@@ -49,6 +50,17 @@ export class DashboardComponent implements OnInit {
         tds: []
     }];
 
+    tableMovieByYear = [{
+        ths: [
+            { text: 'Id', class: 'text-left' },
+            { text: 'Title', class: 'text-left' },
+            { text: 'Year', class: 'text-right' }
+        ],
+        tds: []
+    }];
+
+    defaultYear = new Date().getFullYear() - 1;
+
     constructor(
         private appService: AppService
     ) { }
@@ -57,6 +69,7 @@ export class DashboardComponent implements OnInit {
         this.getYearsOfMoreWinners();
         this.getStudios();
         this.getProducersAwardsInterval();
+        this.getMovieByYear();
     }
 
     getYearsOfMoreWinners() {
@@ -96,13 +109,12 @@ export class DashboardComponent implements OnInit {
     getProducersAwardsInterval() {
         this.appService.getProducersAwardsInterval()
             .subscribe(result => {
-                console.log(result);
                 this.mountProducersAwardsIntervalData(result);
             });
     }
 
     mountProducersAwardsIntervalData(interval: IntervalData) {
-        this.tablesProducers[0].tds = interval.max.map((max, i) => {
+        this.tablesProducers[0].tds = interval.max.map((max) => {
             return [
                 { text: max.producer, class: 'text-left' },
                 { text: max.interval, class: 'text-right' },
@@ -111,12 +123,30 @@ export class DashboardComponent implements OnInit {
             ];
         });
 
-        this.tablesProducers[1].tds = interval.min.map((min, i) => {
+        this.tablesProducers[1].tds = interval.min.map((min) => {
             return [
                 { text: min.producer, class: 'text-left' },
                 { text: min.interval, class: 'text-right' },
                 { text: min.previousWin, class: 'text-right' },
                 { text: min.followingWin, class: 'text-right' }
+            ];
+        });
+    }
+
+    getMovieByYear() {
+        this.appService.getMovieByYear(this.defaultYear)
+            .subscribe(result => {
+                console.log(result);
+                this.mountMovieByYear(result);
+            });
+    }
+
+    mountMovieByYear(movies: Movie[]) {
+        this.tableMovieByYear[0].tds = movies.map(movie => {
+            return [
+                { text: movie.id, class: 'text-left' },
+                { text: movie.title, class: 'text-left' },
+                { text: movie.year, class: 'text-right' }
             ];
         });
     }

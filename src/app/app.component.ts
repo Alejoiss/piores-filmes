@@ -19,9 +19,6 @@ export class AppComponent implements OnInit {
         //         console.log(result);
         //     });
 
-        // this.appService.getMovieByYear()
-        //     .subscribe(result => {
-        //         console.log(result);
-        //     });
+        
     }
 }

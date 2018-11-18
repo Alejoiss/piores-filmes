@@ -35,7 +35,7 @@ export class AppService {
         return this.http.get<IntervalData>(`${this.domain}?projection=max-min-win-interval-for-producers`);
     }
 
-    getMovieByYear(year = 2018): Observable<Movie> {
-        return this.http.get<Movie>(`${this.domain}?winner=true&year=${year}`);
+    getMovieByYear(year: number): Observable<Movie[]> {
+        return this.http.get<Movie[]>(`${this.domain}?winner=true&year=${year}`);
     }
 }
