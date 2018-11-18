@@ -1,6 +1,6 @@
 import { IntervalData } from './../models/interval-data';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Movie } from '../models/movie';
@@ -14,6 +14,9 @@ import { YearsData } from './../models/years-data';
 export class AppService {
 
     domain = 'https://tools.texoit.com/backend-java/api/movies';
+
+    yearEmitter: EventEmitter<number> = new EventEmitter<number>();
+    winnerEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(
         private http: HttpClient

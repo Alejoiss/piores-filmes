@@ -18,7 +18,5 @@ export class AppComponent implements OnInit {
         //     .subscribe(result => {
         //         console.log(result);
         //     });
-
-        
     }
 }

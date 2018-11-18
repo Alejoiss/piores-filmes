@@ -5,9 +5,14 @@
             <th *ngFor="let th of tableData.ths" [class]="th.class">{{ th.text }}</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="tableData.tds.length">
         <tr *ngFor="let td of tableData.tds">
             <td *ngFor="let data of td" [class]="data.class">{{ data.text }}</td>
+        </tr>
+    </tbody>
+    <tbody *ngIf="!tableData.tds.length">
+        <tr>
+            <td class="text-center" [attr.colspan]="tableData.ths.length">No record</td>
         </tr>
     </tbody>
 </table>

@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
         tds: []
     }];
 
-    defaultYear = new Date().getFullYear() - 1;
+    defaultYear = new Date().getFullYear();
 
     constructor(
         private appService: AppService
@@ -70,6 +70,7 @@ export class DashboardComponent implements OnInit {
         this.getStudios();
         this.getProducersAwardsInterval();
         this.getMovieByYear();
+        this.subscribeYear();
     }
 
     getYearsOfMoreWinners() {
@@ -136,7 +137,6 @@ export class DashboardComponent implements OnInit {
     getMovieByYear() {
         this.appService.getMovieByYear(this.defaultYear)
             .subscribe(result => {
-                console.log(result);
                 this.mountMovieByYear(result);
             });
     }
@@ -149,5 +149,13 @@ export class DashboardComponent implements OnInit {
                 { text: movie.year, class: 'text-right' }
             ];
         });
+    }
+
+    subscribeYear() {
+        this.appService.yearEmitter
+            .subscribe(year => {
+                this.defaultYear = year;
+                this.getMovieByYear();
+            });
     }
 }
