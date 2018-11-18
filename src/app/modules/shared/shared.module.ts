@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
@@ -9,7 +10,8 @@ import { AppService } from './services/app.service';
 @NgModule({
     declarations: [TableWrapperComponent, TableComponent, NavbarComponent],
     imports: [
-        CommonModule
+        CommonModule,
+        RouterModule
     ],
     exports: [
         TableWrapperComponent,

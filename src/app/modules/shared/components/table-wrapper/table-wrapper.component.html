@@ -5,6 +5,6 @@
         </div>
     </div>
     <div class="panel-body">
-        <app-table [tableData]="tableData"></app-table>
+        <app-table [tableData]="table" *ngFor="let table of tableData" ></app-table>
     </div>
 </div>

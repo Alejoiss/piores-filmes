@@ -19,16 +19,6 @@ export class AppComponent implements OnInit {
         //         console.log(result);
         //     });
 
-        // this.appService.getStudios()
-        //     .subscribe(result => {
-        //         console.log(result);
-        //     });
-
-        // this.appService.getProducersAwardsInterval()
-        //     .subscribe(result => {
-        //         console.log(result);
-        //     });
-
         // this.appService.getMovieByYear()
         //     .subscribe(result => {
         //         console.log(result);

@@ -1,4 +1,5 @@
 <table class="table table-striped table-hover table-sm table-bordered" *ngIf="tableData">
+    <caption *ngIf="tableData.caption">{{ tableData.caption }}</caption>
     <thead class="thead-dark">
         <tr>
             <th *ngFor="let th of tableData.ths" [class]="th.class">{{ th.text }}</th>

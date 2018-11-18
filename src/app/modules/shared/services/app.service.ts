@@ -1,10 +1,11 @@
+import { IntervalData } from './../models/interval-data';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Movie } from '../models/movie';
 import { MovieData } from './../models/movie-data';
-import { Studio } from './../models/studio';
+import { StudioData } from './../models/studio-data';
 import { YearsData } from './../models/years-data';
 
 @Injectable({
@@ -26,12 +27,12 @@ export class AppService {
         return this.http.get<YearsData>(`${this.domain}?projection=years-with-multiple-winners`);
     }
 
-    getStudios(): Observable<Studio[]> {
-        return this.http.get<Studio[]>(`${this.domain}?projection=studios-with-win-count`);
+    getStudios(): Observable<StudioData> {
+        return this.http.get<StudioData>(`${this.domain}?projection=studios-with-win-count`);
     }
 
-    getProducersAwardsInterval(): Observable<any> {
-        return this.http.get<any>(`${this.domain}?projection=max-min-win-interval-for-producers`);
+    getProducersAwardsInterval(): Observable<IntervalData> {
+        return this.http.get<IntervalData>(`${this.domain}?projection=max-min-win-interval-for-producers`);
     }
 
     getMovieByYear(year = 2018): Observable<Movie> {
