@@ -1,3 +1,4 @@
+import { PaginatorService } from './services/paginator.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
@@ -8,9 +9,16 @@ import { TableWrapperComponent } from './components/table-wrapper/table-wrapper.
 import { TableComponent } from './components/table/table.component';
 import { AppService } from './services/app.service';
 import { ArrayOfIntervalPipe } from './pipes/array-of-interval.pipe';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
-    declarations: [TableWrapperComponent, TableComponent, NavbarComponent, ArrayOfIntervalPipe],
+    declarations: [
+        TableWrapperComponent,
+        TableComponent,
+        NavbarComponent,
+        ArrayOfIntervalPipe,
+        PaginatorComponent
+    ],
     imports: [
         CommonModule,
         FormsModule,
@@ -20,10 +28,12 @@ import { ArrayOfIntervalPipe } from './pipes/array-of-interval.pipe';
         TableWrapperComponent,
         TableComponent,
         NavbarComponent,
-        ArrayOfIntervalPipe
+        ArrayOfIntervalPipe,
+        PaginatorComponent
     ],
     providers: [
-        AppService
+        AppService,
+        PaginatorService
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

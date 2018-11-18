@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
+import { Movie } from '../../shared/models/movie';
 import { Studio } from '../../shared/models/studio';
 import { Year } from '../../shared/models/year';
 import { AppService } from '../../shared/services/app.service';
 import { IntervalData } from './../../shared/models/interval-data';
-import { Movie } from '../../shared/models/movie';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
     tableYears = [{
         ths: [
@@ -60,6 +61,7 @@ export class DashboardComponent implements OnInit {
     }];
 
     defaultYear = new Date().getFullYear();
+    subYear: Subscription;
 
     constructor(
         private appService: AppService
@@ -71,6 +73,7 @@ export class DashboardComponent implements OnInit {
         this.getProducersAwardsInterval();
         this.getMovieByYear();
         this.subscribeYear();
+        this.appService.yearEmitter.emit(this.defaultYear);
     }
 
     getYearsOfMoreWinners() {
@@ -152,10 +155,14 @@ export class DashboardComponent implements OnInit {
     }
 
     subscribeYear() {
-        this.appService.yearEmitter
+        this.subYear = this.appService.yearEmitter
             .subscribe(year => {
                 this.defaultYear = year;
                 this.getMovieByYear();
             });
+    }
+
+    ngOnDestroy() {
+        this.subYear.unsubscribe();
     }
 }

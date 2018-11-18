@@ -1,3 +1,4 @@
 <div class="row">
-    <app-table-wrapper class="col-sm-6" title="List years with multiple winners"></app-table-wrapper>
+    <app-table-wrapper class="col-sm-12" title="List movies" [tableData]="tableMovies" [filterYear]="true" [filterWinner]="true"></app-table-wrapper>
+    <app-paginator [movieData]="movieData"></app-paginator>
 </div>

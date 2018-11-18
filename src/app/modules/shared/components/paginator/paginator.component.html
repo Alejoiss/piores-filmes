@@ -1,0 +1,12 @@
+<div class="row justify-content-md-center" *ngIf="movieData">
+    <div class="col-md-auto">
+        <button [disabled]="movieData.first" type="button" class="btn btn-sm btn-info"><i class="fas fa-step-backward" (click)="getFirstPage()"></i></button>
+        <button [disabled]="movieData.first" type="button" class="btn btn-sm btn-info"><i class="fas fa-backward" (click)="getPreviousPage()"></i></button>
+
+        <button type="button" [class.active]="i == movieData.number + 1" class="btn btn-sm btn-info" *ngFor="let i of 1 | arrayOfInterval:movieData.totalPages"
+            (click)="getPageNumber(i)">{{ i }}</button>
+
+        <button [disabled]="movieData.last" type="button" class="btn btn-sm btn-info"><i class="fas fa-forward" (click)="getNextPage()"></i></button>
+        <button [disabled]="movieData.last" type="button" class="btn btn-sm btn-info"><i class="fas fa-step-forward" (click)="getLastPage()"></i></button>
+    </div>
+</div>

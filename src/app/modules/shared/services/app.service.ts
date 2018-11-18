@@ -1,12 +1,14 @@
-import { IntervalData } from './../models/interval-data';
 import { HttpClient } from '@angular/common/http';
-import { Injectable, EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import { Movie } from '../models/movie';
+import { IntervalData } from './../models/interval-data';
 import { MovieData } from './../models/movie-data';
 import { StudioData } from './../models/studio-data';
 import { YearsData } from './../models/years-data';
+
 
 @Injectable({
     providedIn: 'root'
@@ -22,8 +24,15 @@ export class AppService {
         private http: HttpClient
     ) { }
 
-    getMovieData(page = 1, size = 10, winner = true, year = 2018): Observable<MovieData> {
-        return this.http.get<MovieData>(`${this.domain}?page=${page}&size=${size}&winner=${winner}&year=${year}`);
+    getMovieData(objParams: Object): Observable<MovieData> {
+        const params = new URLSearchParams();
+
+        // tslint:disable-next-line:forin
+        for (const key in objParams) {
+            params.set(key, objParams[key]);
+        }
+
+        return this.http.get<MovieData>(`${this.domain}?${params}`);
     }
 
     getYearsOfMoreWinners(): Observable<YearsData> {
