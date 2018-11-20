@@ -8,7 +8,7 @@ import { MovieData } from '../../models/movie-data';
     templateUrl: './paginator.component.html',
     styleUrls: ['./paginator.component.scss']
 })
-export class PaginatorComponent implements OnInit {
+export class PaginatorComponent {
 
     @Input() movieData: MovieData;
 
@@ -16,34 +16,39 @@ export class PaginatorComponent implements OnInit {
         private paginatorService: PaginatorService
     ) { }
 
-    ngOnInit() {
-    }
-
     getFirstPage() {
         if (!this.movieData.first) {
             this.paginatorService.pageNumberEvent.emit(0);
+            return 0;
         }
     }
 
     getPreviousPage() {
         if (!this.movieData.first) {
-            this.paginatorService.pageNumberEvent.emit(this.movieData.number - 1);
+            const page = this.movieData.number - 1;
+            this.paginatorService.pageNumberEvent.emit(page);
+            return page;
         }
     }
 
     getPageNumber(page) {
         this.paginatorService.pageNumberEvent.emit(page - 1);
+        return page - 1;
     }
 
     getNextPage() {
         if (!this.movieData.last) {
-            this.paginatorService.pageNumberEvent.emit(this.movieData.number + 1);
+            const page = this.movieData.number + 1;
+            this.paginatorService.pageNumberEvent.emit(page);
+            return page;
         }
     }
 
     getLastPage() {
         if (!this.movieData.last) {
-            this.paginatorService.pageNumberEvent.emit(this.movieData.totalPages - 1);
+            const page = this.movieData.totalPages - 1;
+            this.paginatorService.pageNumberEvent.emit(page);
+            return page;
         }
     }
 }
