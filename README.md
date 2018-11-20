@@ -1,5 +1,7 @@
 # FrontendProject - Os Piores Filmes
 
+[DEMO](https://angular-worst-movies.herokuapp.com/dashboard)
+
 Este projeto foi gerado utilizando as seguintes ferramentas:
 * [Node.js](https://nodejs.org/en/) version 10.13.0.
 * [Angular](https://angular.io/) version 7.0.0.
