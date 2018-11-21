@@ -1,4 +1,10 @@
+<h1>List of All Movies</h1>
+<hr class="divisor">
+
 <div class="row">
-    <app-table-wrapper class="col-sm-12" title="List movies" [tableData]="tableMovies" [filterYear]="true" [filterWinner]="true"></app-table-wrapper>
-    <app-paginator [movieData]="movieData"></app-paginator>
+    <app-table-wrapper class="col-sm-12" title="List of movies" [tableData]="tableMovies" [filterYear]="true"
+        [filterWinner]="true"></app-table-wrapper>
+    <div class="col-sm-12-col-md-8 offset-md-4">
+        <app-paginator [movieData]="movieData"></app-paginator>
+    </div>
 </div>

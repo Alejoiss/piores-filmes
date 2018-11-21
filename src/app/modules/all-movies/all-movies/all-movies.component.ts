@@ -14,10 +14,10 @@ export class AllMoviesComponent implements OnInit, OnDestroy {
 
     tableMovies = [{
         ths: [
-            { text: 'Id', class: 'text-left' },
-            { text: 'Title', class: 'text-left' },
-            { text: 'Year', class: 'text-right' },
-            { text: 'Winner', class: 'text-left' }
+            { text: 'Id', class: 'text-center' },
+            { text: 'Title', class: 'text-center' },
+            { text: 'Year', class: 'text-center' },
+            { text: 'Winner', class: 'text-center' }
         ],
         tds: []
     }];
@@ -49,7 +49,6 @@ export class AllMoviesComponent implements OnInit, OnDestroy {
             year: this.selectedYear,
             winner: this.selectedWinner
         }).subscribe(result => {
-            console.log(result);
             this.movieData = result;
             this.mountMovieByYear(result);
         });
@@ -58,10 +57,10 @@ export class AllMoviesComponent implements OnInit, OnDestroy {
     mountMovieByYear(movies: MovieData) {
         this.tableMovies[0].tds = movies.content.map(movie => {
             return [
-                { text: movie.id, class: 'text-left' },
-                { text: movie.title, class: 'text-left' },
-                { text: movie.year, class: 'text-right' },
-                { text: movie.winner ? 'Yes' : 'No', class: 'text-left' }
+                { text: movie.id, class: 'text-center' },
+                { text: movie.title, class: 'text-center' },
+                { text: movie.year, class: 'text-center' },
+                { text: movie.winner ? 'Yes' : 'No', class: 'text-center' }
             ];
         });
     }

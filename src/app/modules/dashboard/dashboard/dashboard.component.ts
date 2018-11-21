@@ -16,16 +16,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     tableYears = [{
         ths: [
-            { text: 'Year', class: 'text-left' },
-            { text: 'Win Count', class: 'text-right' }
+            { text: 'Year', class: 'text-center' },
+            { text: 'Win Count', class: 'text-center' }
         ],
         tds: []
     }];
 
     tableStudios = [{
         ths: [
-            { text: 'Name', class: 'text-left' },
-            { text: 'Win Count', class: 'text-right' }
+            { text: 'Name', class: 'text-center' },
+            { text: 'Win Count', class: 'text-center' }
         ],
         tds: []
     }];
@@ -34,28 +34,28 @@ export class DashboardComponent implements OnInit, OnDestroy {
     tablesProducers = [{
         caption: 'Maximun',
         ths: [
-            { text: 'Producer', class: 'text-left' },
-            { text: 'Interval', class: 'text-right' },
-            { text: 'Previous Year', class: 'text-right' },
-            { text: 'Following Year', class: 'text-right' }
+            { text: 'Producer', class: 'text-center' },
+            { text: 'Interval', class: 'text-center' },
+            { text: 'Previous Year', class: 'text-center' },
+            { text: 'Following Year', class: 'text-center' }
         ],
         tds: []
     }, {
         caption: 'Minimun',
         ths: [
-            { text: 'Producer', class: 'text-left' },
-            { text: 'Interval', class: 'text-right' },
-            { text: 'Previous Year', class: 'text-right' },
-            { text: 'Following Year', class: 'text-right' }
+            { text: 'Producer', class: 'text-center' },
+            { text: 'Interval', class: 'text-center' },
+            { text: 'Previous Year', class: 'text-center' },
+            { text: 'Following Year', class: 'text-center' }
         ],
         tds: []
     }];
 
     tableMovieByYear = [{
         ths: [
-            { text: 'Id', class: 'text-left' },
-            { text: 'Title', class: 'text-left' },
-            { text: 'Year', class: 'text-right' }
+            { text: 'Id', class: 'text-center' },
+            { text: 'Title', class: 'text-center' },
+            { text: 'Year', class: 'text-center' }
         ],
         tds: []
     }];
@@ -86,8 +86,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     mountYearData(years: Year[]) {
         this.tableYears[0].tds = years.map(year => {
             return [
-                { text: year.year, class: 'text-left' },
-                { text: year.winnerCount, class: 'text-right' }
+                { text: year.year, class: 'text-center' },
+                { text: year.winnerCount, class: 'text-center' }
             ];
         });
     }
@@ -103,8 +103,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.tableStudios[0].tds = studios.map((studio, i) => {
             if (i < this.limitTableStudios || !this.limitTableStudios) {
                 return [
-                    { text: studio.name, class: 'text-left' },
-                    { text: studio.winCount, class: 'text-right' }
+                    { text: studio.name, class: 'text-center' },
+                    { text: studio.winCount, class: 'text-center' }
                 ];
             }
         });
@@ -120,19 +120,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
     mountProducersAwardsIntervalData(interval: IntervalData) {
         this.tablesProducers[0].tds = interval.max.map((max) => {
             return [
-                { text: max.producer, class: 'text-left' },
-                { text: max.interval, class: 'text-right' },
-                { text: max.previousWin, class: 'text-right' },
-                { text: max.followingWin, class: 'text-right' }
+                { text: max.producer, class: 'text-center' },
+                { text: max.interval, class: 'text-center' },
+                { text: max.previousWin, class: 'text-center' },
+                { text: max.followingWin, class: 'text-center' }
             ];
         });
 
         this.tablesProducers[1].tds = interval.min.map((min) => {
             return [
-                { text: min.producer, class: 'text-left' },
-                { text: min.interval, class: 'text-right' },
-                { text: min.previousWin, class: 'text-right' },
-                { text: min.followingWin, class: 'text-right' }
+                { text: min.producer, class: 'text-center' },
+                { text: min.interval, class: 'text-center' },
+                { text: min.previousWin, class: 'text-center' },
+                { text: min.followingWin, class: 'text-center' }
             ];
         });
     }
@@ -147,9 +147,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     mountMovieByYear(movies: Movie[]) {
         this.tableMovieByYear[0].tds = movies.map(movie => {
             return [
-                { text: movie.id, class: 'text-left' },
-                { text: movie.title, class: 'text-left' },
-                { text: movie.year, class: 'text-right' }
+                { text: movie.id, class: 'text-center' },
+                { text: movie.title, class: 'text-center' },
+                { text: movie.year, class: 'text-center' }
             ];
         });
     }
